@@ -44,12 +44,3 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
-    uniqueID: 3899532853
-    locked: 0
-  - name: Furnature
-    uniqueID: 3606248241
-    locked: 0
-  - name: People
-    uniqueID: 1245929275
-    locked: 0

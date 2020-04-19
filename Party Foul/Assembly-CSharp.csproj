@@ -64,7 +64,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\IInteractable.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\baby.cs" />
+    <Compile Include="Assets\Scripts\music_player.cs" />
     <Compile Include="Assets\Scripts\npc.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>/Users/matthew/LudumDare46/Party Foul/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

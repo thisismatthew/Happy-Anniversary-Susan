@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class npc : MonoBehaviour
+public class npc : MonoBehaviour, IInteractable
 {
 
     //much of this script was pulled from https://forum.unity.com/threads/making-npcs-wander-in-2d.524950/
@@ -26,7 +26,7 @@ public class npc : MonoBehaviour
     }
 
     
-    public void Wander()
+    public virtual void Wander()
     { 
         thisTransform.position += moveDirections[currentMoveDirection] * Time.deltaTime * moveSpeed;  // Move the object in the chosen direction at the set speed
 
@@ -44,11 +44,21 @@ public class npc : MonoBehaviour
         currentMoveDirection = Mathf.FloorToInt(Random.Range(0, moveDirections.Length));
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision) //This may have a side effect of making the dog and baby run from toby.
     {
         if (collision.collider.tag != "npc")
         {
             currentMoveDirection = Mathf.FloorToInt(Random.Range(0, moveDirections.Length));
         }
+    }
+
+    public virtual void Interact()
+    {
+        Debug.Log("Interaction");
+    }
+
+    public virtual void StopInteract()
+    {
+       
     }
 }

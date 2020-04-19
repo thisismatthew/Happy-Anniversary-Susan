@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb;
     public float move_speed = 5f;
     Vector2 movement;
+    public IInteractable interactable;
     // Start is called before the first frame update
 
   
@@ -16,10 +17,27 @@ public class Player : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
     }
+
     private void FixedUpdate()
 	{
         rb.MovePosition(rb.position + movement * move_speed * Time.fixedDeltaTime);
 	}
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        interactable = collision.collider.GetComponent<IInteractable>();
+    }
 
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        interactable = null;
+    }
+
+    public void Interact()
+    {
+        if (interactable != null)
+        {
+            interactable.Interact();
+        }
+    }
 }
