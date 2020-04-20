@@ -21,7 +21,9 @@ public class Player : MonoBehaviour
             sr.flipX = true;
         else
             sr.flipX = false;
-     
+
+        sr.sortingOrder = ((int)transform.position.y * 2) *-1;
+        
 
     }
 
