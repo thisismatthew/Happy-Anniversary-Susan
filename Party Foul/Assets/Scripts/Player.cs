@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     private Vector2 movement;
     public IInteractable interactable;
     public Animator animator;
-    public SpriteRenderer sr;
+    public SpriteRenderer spriteRenderer;
 
 
     private void Update()
@@ -18,13 +18,12 @@ public class Player : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
         animator.SetFloat("Speed", (Mathf.Abs((float)movement.x) + Mathf.Abs((float)movement.y)));
         if ((float)movement.x < 0)
-            sr.flipX = true;
+           spriteRenderer.flipX = true;
         else
-            sr.flipX = false;
+           spriteRenderer.flipX = false;
 
-        sr.sortingOrder = ((int)transform.position.y * 2) *-1;
-        
-
+       spriteRenderer.sortingOrder = ((int)transform.position.y * 2) *-1;
+       
     }
 
     private void FixedUpdate()

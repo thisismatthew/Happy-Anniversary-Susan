@@ -14,6 +14,8 @@ public class npc : MonoBehaviour, IInteractable
     internal Vector3[] moveDirections = new Vector3[] { Vector3.right, Vector3.left, Vector3.up, Vector3.down, Vector3.zero, Vector3.zero };
     internal int currentMoveDirection;
     private npc target;
+    public Animator animator;
+    public SpriteRenderer sr;
     
 
     public string Name { get => name; set => name = value; }
@@ -29,7 +31,10 @@ public class npc : MonoBehaviour, IInteractable
     public virtual void Wander()
     { 
         thisTransform.position += moveDirections[currentMoveDirection] * Time.deltaTime * moveSpeed;  // Move the object in the chosen direction at the set speed
-
+        if (currentMoveDirection == 0)
+            sr.flipX = true;
+        if (currentMoveDirection == 1)
+            sr.flipX = false;
         if (decisionTimeCount > 0) decisionTimeCount -= Time.deltaTime;
         else
         {

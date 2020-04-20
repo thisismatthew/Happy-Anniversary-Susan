@@ -6,6 +6,7 @@ public class baby : npc
 {
     private bool crying = false;
     public float cryingTimer = 10f;
+    public Sprite[] babySprites;
 
    public override void Wander()
     {
@@ -25,8 +26,10 @@ public class baby : npc
 
     public override void Interact()
     {
+       
         if (cryingTimer <= 20)
         {
+            animator.SetBool("crying", false);
             cryingTimer += 20;
         }
         
@@ -34,7 +37,8 @@ public class baby : npc
 
     private void BigCry()
     {
-        Debug.Log("BIG CRY BIG CRY!");
+        animator.SetBool("crying", true);
+        FindObjectOfType<AudioManager>().Play("cry"); // bell plays when ending?
     }
 
 }

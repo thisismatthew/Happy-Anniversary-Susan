@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-	private int _disaster_count;
-	private int _score;
+	//private int _disaster_count;
+	//private int _score;
 	public Player _player;
 	public npc[] _non_player_characters;
    
@@ -13,8 +13,8 @@ public class GameController : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		_disaster_count = 0;
-		_score = 0;
+		//_disaster_count = 0;
+		//_score = 0;
 	}
 
 	// Update is called once per frame
@@ -29,8 +29,6 @@ public class GameController : MonoBehaviour
         {
             _player.Interact();
         }
-
-       
 
     }
 
