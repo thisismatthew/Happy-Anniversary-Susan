@@ -30,6 +30,8 @@ public class GameController : MonoBehaviour
             _player.Interact();
         }
 
+       
+
     }
 
   

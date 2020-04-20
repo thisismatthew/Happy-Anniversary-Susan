@@ -8,9 +8,7 @@ public class Player : MonoBehaviour
     public float move_speed = 5f;
     Vector2 movement;
     public IInteractable interactable;
-    // Start is called before the first frame update
 
-  
 
     private void Update()
     {
@@ -26,6 +24,7 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         interactable = collision.collider.GetComponent<IInteractable>();
+        Debug.Log(interactable);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -40,4 +39,6 @@ public class Player : MonoBehaviour
             interactable.Interact();
         }
     }
+
+
 }
