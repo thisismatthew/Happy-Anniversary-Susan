@@ -6,19 +6,29 @@ public class Player : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float move_speed = 5f;
-    Vector2 movement;
+    private Vector2 movement;
     public IInteractable interactable;
+    public Animator animator;
+    public SpriteRenderer sr;
 
 
     private void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        animator.SetFloat("Speed", (Mathf.Abs((float)movement.x) + Mathf.Abs((float)movement.y)));
+        if ((float)movement.x < 0)
+            sr.flipX = true;
+        else
+            sr.flipX = false;
+     
+
     }
 
     private void FixedUpdate()
 	{
         rb.MovePosition(rb.position + movement * move_speed * Time.fixedDeltaTime);
+        
 	}
 
     private void OnCollisionEnter2D(Collision2D collision)
