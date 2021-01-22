@@ -15,7 +15,7 @@ public class npc : MonoBehaviour, IInteractable
     internal int currentMoveDirection;
     private npc target;
     public Animator animator;
-    public SpriteRenderer sr;
+    public SpriteRenderer spriteRenderer;
     
 
     public string Name { get => name; set => name = value; }
@@ -32,15 +32,16 @@ public class npc : MonoBehaviour, IInteractable
     { 
         thisTransform.position += moveDirections[currentMoveDirection] * Time.deltaTime * moveSpeed;  // Move the object in the chosen direction at the set speed
         if (currentMoveDirection == 0)
-            sr.flipX = true;
+            spriteRenderer.flipX = true;
         if (currentMoveDirection == 1)
-            sr.flipX = false;
+            spriteRenderer.flipX = false;
         if (decisionTimeCount > 0) decisionTimeCount -= Time.deltaTime;
         else
         {
             decisionTimeCount = Random.Range(decisionTime.x, decisionTime.y); // Choose a random time delay for taking a decision ( changing direction, or standing in place for a while )
             ChooseMoveDirection();// Choose a movement direction, or stay in place
         }
+        spriteRenderer.sortingOrder = ((int)transform.position.y * 2) * -1;
     }
 
     void ChooseMoveDirection()

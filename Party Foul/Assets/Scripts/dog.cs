@@ -5,7 +5,7 @@ using UnityEngine;
 public class dog : npc
 {
     
-    public float pooTimer = 5f;
+    public float pooTimer = 20f;
     public GameObject poo;
 
     public override void Wander()
@@ -19,7 +19,7 @@ public class dog : npc
         else
         {
             Poo();
-            pooTimer += 30;
+            pooTimer += 8f;
         }
 
 

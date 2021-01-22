@@ -10,17 +10,19 @@ public class baby : npc
 
    public override void Wander()
     {
-        
-        if (cryingTimer >= 0)
+
+        if (crying == false)
         {
-            cryingTimer -= Time.deltaTime;
-            base.Wander();
+            if (cryingTimer >= 0)
+            {
+                cryingTimer -= Time.deltaTime;
+                base.Wander();
+            }
+            else
+            {
+                BigCry();
+            }
         }
-        else
-        {
-            BigCry();
-        }
-        
         
     }
 
@@ -29,16 +31,32 @@ public class baby : npc
        
         if (cryingTimer <= 20)
         {
+            
             animator.SetBool("crying", false);
             cryingTimer += 20;
+            crying = false;
+            PlayRandomShush();
+            FindObjectOfType<AudioManager>().Stop("cry");
         }
         
     }
 
     private void BigCry()
     {
+        crying = true;
+        FindObjectOfType<AudioManager>().Play("cry");
         animator.SetBool("crying", true);
-        FindObjectOfType<AudioManager>().Play("cry"); // bell plays when ending?
+
+
+    }
+
+    private void PlayRandomShush()
+    {
+        string shush = "SHUSH_";
+        shush += Random.Range(0, 8).ToString();
+        Debug.Log(shush);
+        FindObjectOfType<AudioManager>().Play(shush);
+
     }
 
 }
