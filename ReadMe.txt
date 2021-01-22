@@ -1,5 +1,4 @@
-Thanks for looking at this jam game! We had a lot of fun making it!
-The Mr Toot Team
+Thanks for looking at our jam game! We had a lot of fun making it!
 
 Art - Millie Holten
 Programming - Matthew Jackson
